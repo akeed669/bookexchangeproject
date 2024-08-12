@@ -1,9 +1,13 @@
-name: Build and Deploy
+name: Build and Push Docker Image
 
 on:
   push:
     branches:
       - develop
+    paths:
+      - "Dockerfile" # Trigger workflow if Dockerfile changes
+      - "src/**" # Trigger workflow if any file in the src directory changes
+      - "package.json"
 
 jobs:
   build:
