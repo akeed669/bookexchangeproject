@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  app:
+    image: akeedm/bookexchangeserver:latest
+    ports:
+      - "5000:5000"
+    environment:
+      DB_NAME: bookexchange
+      DB_USER: akeed
+      DB_PASSWORD: akeed123
+      DB_HOST: db
+      DB_PORT: 5432
+      PORT: 5000
+      JWT_SECRET: book_exchange_jwt
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: akeed
+      POSTGRES_PASSWORD: akeed123
+      POSTGRES_DB: bookexchange
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
