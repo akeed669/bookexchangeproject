@@ -26,25 +26,16 @@ jobs:
           echo "::set-output name=public_ip::$PUBLIC_IP"
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.AWS_SSH_PRIVATE_KEY }}
+        run: |
+          # Write the private key to a temporary file
+          echo "${{ secrets.AWS_SSH_PRIVATE_KEY }}" > /tmp/private_key
+          chmod 600 /tmp/private_key
 
       - name: Deploy to EC2
-        env:
-          PRIVATE_KEY: ${{ secrets.AWS_SSH_PRIVATE_KEY }}
-          PUBLIC_IP: ${{ env.PUBLIC_IP }}
         run: |
-          # Create a temporary file for the private key
-          echo "$PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
-
-           # Execute SSH command
-          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@$PUBLIC_IP << 'EOF'
+          # SSH into EC2 and execute commands with strict host key checking disabled
+          ssh -o StrictHostKeyChecking=no -i /tmp/private_key ec2-user@${{ steps.get_ip.outputs.public_ip }} << 'EOF'
             cd /usr/app
             sudo docker-compose pull
             sudo docker-compose up -d
           EOF
-
-          # Clean up the private key file
-          rm private_key.pem
