@@ -1,13 +1,13 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Image Backend
 
 on:
   push:
     branches:
       - develop
     paths:
-      - "Dockerfile" # Trigger workflow if Dockerfile changes
-      - "src/**" # Trigger workflow if any file in the src directory changes
-      - "package.json"
+      - "backend/Dockerfile" # Trigger workflow if Dockerfile changes
+      - "backend/src/**" # Trigger workflow if any file in the src directory changes
+      - "backend/package.json"
       - "docker-compose.yml"
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: Dockerfile
+          context: backend
+          file: backend/Dockerfile
           push: true
           tags: akeedm/bookexchangeserver:latest
