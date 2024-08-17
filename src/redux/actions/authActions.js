@@ -1,22 +1,22 @@
-import axios from "axios";
+import { registerUser, loginUser } from "../../services/apiService";
 
 export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: "LOADING" });
-    const res = await axios.post("/api/auth/register", userData);
-    dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
+    const data = await registerUser(userData);
+    dispatch({ type: "REGISTER_SUCCESS", payload: data });
   } catch (error) {
-    dispatch({ type: "ERROR", payload: error.response.data });
+    dispatch({ type: "ERROR", payload: error });
   }
 };
 
 export const login = (userData) => async (dispatch) => {
   try {
     dispatch({ type: "LOADING" });
-    const res = await axios.post("/api/auth/login", userData);
-    dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    const data = await loginUser(userData);
+    dispatch({ type: "LOGIN_SUCCESS", payload: data });
   } catch (error) {
-    dispatch({ type: "ERROR", payload: error.response.data });
+    dispatch({ type: "ERROR", payload: error });
   }
 };
 
