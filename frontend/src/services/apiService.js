@@ -17,7 +17,10 @@ axios.interceptors.request.use(
 
 export const registerUser = async (userData) => {
   try {
-    const response = await axios.post(`${API_URL}/auth/register`, userData);
+    const response = await axios.post(
+      `http://server:5000/api/auth/register`,
+      userData
+    );
     return response.data;
   } catch (error) {
     throw error.response.data;
