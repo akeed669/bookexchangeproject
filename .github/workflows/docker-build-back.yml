@@ -8,7 +8,6 @@ on:
       - "backend/Dockerfile" # Trigger workflow if Dockerfile changes
       - "backend/src/**" # Trigger workflow if any file in the src directory changes
       - "backend/package.json"
-      - "docker-compose.yml"
 
 jobs:
   build:

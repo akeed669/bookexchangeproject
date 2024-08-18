@@ -8,7 +8,6 @@ on:
       - "frontend/Dockerfile" # Trigger workflow if Dockerfile changes
       - "frontend/src/**" # Trigger workflow if any file in the src directory changes
       - "frontend/package.json"
-      - "docker-compose.yml"
 
 jobs:
   build:
