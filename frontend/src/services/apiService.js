@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://backend:5000/api";
+const API_URL = `http://${process.env.REACT_APP_API_URL}:5000/api`;
+console.log(API_URL);
 
 axios.interceptors.request.use(
   (config) => {
@@ -17,10 +18,9 @@ axios.interceptors.request.use(
 
 export const registerUser = async (userData) => {
   try {
-    const response = await axios.post(
-      `http://server:5000/api/auth/register`,
-      userData
-    );
+    console.log("came inside register...below is url...");
+    console.log(`${API_URL}/auth/register`);
+    const response = await axios.post(`${API_URL}/auth/register`, userData);
     return response.data;
   } catch (error) {
     throw error.response.data;

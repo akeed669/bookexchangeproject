@@ -10,10 +10,14 @@ COPY package*.json ./
 # Install dependencies (only production dependencies)
 RUN npm ci --omit=dev
 
+# Set build arguments
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
 # Copy the rest of the application code
 COPY . .
 
-# Build the application (assuming you're using a build tool like React's create-react-app)
+# Build the application with the API URL embedded
 RUN npm run build
 
 # Use a minimal base image with only nginx to serve the content

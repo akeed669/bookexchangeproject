@@ -5,9 +5,10 @@ on:
     branches:
       - develop
     paths:
-      - "frontend/Dockerfile" # Trigger workflow if Dockerfile changes
-      - "frontend/src/**" # Trigger workflow if any file in the src directory changes
+      - "frontend/Dockerfile"
+      - "frontend/src/**"
       - "frontend/package.json"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,6 +17,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Get EC2 Public IP
+        id: get_ip
+        run: |
+          INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=my-instance-tag" --query "Reservations[*].Instances[*].InstanceId" --output text)
+          PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
+          echo "PUBLIC_IP=$PUBLIC_IP" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -33,3 +48,5 @@ jobs:
           file: frontend/Dockerfile
           push: true
           tags: akeedm/bookexchangeui:latest
+          build-args: |
+            REACT_APP_API_URL=${{ env.PUBLIC_IP }}
