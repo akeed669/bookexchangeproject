@@ -9,6 +9,11 @@ on:
       - "frontend/src/**"
       - "frontend/package.json"
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to build from"
+        required: true
+        default: "develop"
 
 jobs:
   build:
