@@ -42,11 +42,11 @@ const Home = () => {
             How It Works
           </h3>
           <div className="flex flex-col md:flex-row justify-around space-y-8 md:space-y-0">
-            <div className="max-w-sm mx-auto md:max-w-none md:mx-0">
+            <div className="max-w-sm mx-auto md:max-w-none md:mx-0 text-center">
               <img
-                src="path/to/your/upload-books-image.jpg"
+                src="images/home/img_1.jpg"
                 alt="Upload Books"
-                className="w-full rounded-lg shadow-md mb-4"
+                className="w-64 h-64 rounded-lg shadow-md mb-4 mx-auto"
               />
               <h4 className="text-xl font-semibold text-gray-800">
                 Upload Your Books
@@ -56,11 +56,12 @@ const Home = () => {
                 community.
               </p>
             </div>
-            <div className="max-w-sm mx-auto md:max-w-none md:mx-0">
+
+            <div className="max-w-sm mx-auto md:max-w-none md:mx-0 text-center">
               <img
-                src="path/to/your/find-books-image.jpg"
+                src="images/home/img_2.jpg"
                 alt="Find Books"
-                className="w-full rounded-lg shadow-md mb-4"
+                className="w-64 h-64 rounded-lg shadow-md mb-4 mx-auto"
               />
               <h4 className="text-xl font-semibold text-gray-800">
                 Find Books
@@ -69,11 +70,11 @@ const Home = () => {
                 Explore our vast collection of books available for exchange.
               </p>
             </div>
-            <div className="max-w-sm mx-auto md:max-w-none md:mx-0">
+            <div className="max-w-sm mx-auto md:max-w-none md:mx-0 text-center">
               <img
-                src="path/to/your/exchange-books-image.jpg"
+                src="images/home/img_3.jpg"
                 alt="Exchange Books"
-                className="w-full rounded-lg shadow-md mb-4"
+                className="w-64 h-64 rounded-lg shadow-md mb-4 mx-auto"
               />
               <h4 className="text-xl font-semibold text-gray-800">
                 Exchange Books

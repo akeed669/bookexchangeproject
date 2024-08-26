@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="mx-auto px-6 py-16 text-center flex justify-center items-center min-h-screen">
+      <main className="flex-grow flex justify-center items-center px-4 py-8 sm:py-16 md:py-24 overflow-y-auto">
         <FormWrapper title="Log In" onSubmit={handleSubmit}>
           <Input
             type="email"

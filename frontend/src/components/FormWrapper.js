@@ -8,7 +8,7 @@ const FormWrapper = ({ title, children, onSubmit }) => {
       </div>
       <form
         onSubmit={onSubmit}
-        className="mt-8 space-y-6 bg-white p-8 shadow-lg rounded-lg"
+        className="mt-8 space-y-6 bg-white p-8 rounded-lg"
       >
         {children}
       </form>
