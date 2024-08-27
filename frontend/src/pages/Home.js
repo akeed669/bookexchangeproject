@@ -44,7 +44,7 @@ const Home = () => {
           <div className="flex flex-col md:flex-row justify-around space-y-8 md:space-y-0">
             <div className="max-w-sm mx-auto md:max-w-none md:mx-0 text-center">
               <img
-                src="images/home/img_1.jpg"
+                src="https://book-exchange-server-akeed-frontend-images.s3.amazonaws.com/img_1.jpg"
                 alt="Upload Books"
                 className="w-64 h-64 rounded-lg shadow-md mb-4 mx-auto"
               />
@@ -59,7 +59,7 @@ const Home = () => {
 
             <div className="max-w-sm mx-auto md:max-w-none md:mx-0 text-center">
               <img
-                src="images/home/img_2.jpg"
+                src="https://book-exchange-server-akeed-frontend-images.s3.amazonaws.com/img_2.jpg"
                 alt="Find Books"
                 className="w-64 h-64 rounded-lg shadow-md mb-4 mx-auto"
               />
@@ -72,7 +72,7 @@ const Home = () => {
             </div>
             <div className="max-w-sm mx-auto md:max-w-none md:mx-0 text-center">
               <img
-                src="images/home/img_3.jpg"
+                src="https://book-exchange-server-akeed-frontend-images.s3.amazonaws.com/img_3.jpg"
                 alt="Exchange Books"
                 className="w-64 h-64 rounded-lg shadow-md mb-4 mx-auto"
               />
