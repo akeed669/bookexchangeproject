@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "akeed",
+    "password": "akeed123",
+    "database": "bookexchange",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "akeed",
+    "password": "akeed123",
+    "database": "bookexchange",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "akeed",
+    "password": "akeed123",
+    "database": "bookexchange",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

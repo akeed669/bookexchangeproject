@@ -1,26 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">BookExchange</h1>
-          <nav className="space-x-6">
-            <Link to="/register" className="text-gray-700 hover:text-blue-600">
-              Register
-            </Link>
-            <Link to="/login" className="text-gray-700 hover:text-blue-600">
-              Login
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-blue-600">
-              About
-            </Link>
-          </nav>
-        </div>
-      </header>
-
+      <Header />
       <main className="flex-grow container mx-auto px-6 py-16 text-center">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
           Discover & Exchange Books Easily
@@ -86,14 +72,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <footer className="bg-gray-800 py-6">
-        <div className="container mx-auto px-6 text-center text-white">
-          <p className="text-sm">
-            &copy; 2024 BookExchange. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

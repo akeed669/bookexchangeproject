@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import About from "./pages/About";
+import Profile from "./pages/Profile";
 
 const App = () => (
   <div>
@@ -12,6 +13,7 @@ const App = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/about" element={<About />} />
+      <Route path="/dashboard" element={<Profile />} />
     </Routes>
   </div>
 );

@@ -13,6 +13,7 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -22,6 +23,10 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(register(formData));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -47,14 +52,23 @@ const Register = () => {
             required
           />
 
-          <Input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Create a password"
-            required
-          />
+          <div className="relative">
+            <Input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Create a password"
+              required
+            />
+            <Button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute inset-y-0 right-0 px-3 text-gray-600 hover:text-gray-800 focus:outline-none"
+            >
+              {showPassword ? "Hide" : "Show"}
+            </Button>
+          </div>
 
           <Button type="submit">Register</Button>
         </FormWrapper>

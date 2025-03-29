@@ -5,11 +5,37 @@ const initialState = {
   error: null,
 };
 
+const setLocalStorage = (action) => {
+  try {
+    localStorage.setItem("token", action.payload.token);
+    localStorage.setItem("username", action.payload.user.username);
+  } catch (error) {
+    console.error("Failed to set localStorage:", error);
+  }
+};
+
+const resetLocalStorage = () => {
+  try {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+  } catch (error) {
+    console.error("Failed to reset localStorage:", error);
+  }
+};
+
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "REGISTER_SUCCESS":
+      setLocalStorage(action);
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        loading: false,
+      };
     case "LOGIN_SUCCESS":
-      localStorage.setItem("token", action.payload.token);
+      setLocalStorage(action);
+
       return {
         ...state,
         user: action.payload.user,
@@ -17,8 +43,15 @@ const authReducer = (state = initialState, action) => {
         loading: false,
       };
     case "AUTH_ERROR":
+      return {
+        ...state,
+        user: null,
+        token: null,
+        loading: false,
+        error: action.payload.error,
+      };
     case "LOGOUT":
-      localStorage.removeItem("token");
+      resetLocalStorage();
       return { ...state, user: null, token: null, loading: false };
     case "LOADING":
       return { ...state, loading: true };

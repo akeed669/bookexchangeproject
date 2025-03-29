@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/authActions";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -13,6 +13,8 @@ const Login = () => {
     password: "",
   });
   const dispatch = useDispatch();
+
+  const error = useSelector((state) => state.auth.error);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,6 +47,9 @@ const Login = () => {
             placeholder="Password"
             required
           />
+
+          {/* Display error message if it exists */}
+          {error && <p className="text-red-600 text-center">{error}</p>}
 
           <div className="text-center">
             <a href="/" className="text-sm text-blue-600 hover:underline">
