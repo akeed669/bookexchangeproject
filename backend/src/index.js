@@ -34,6 +34,7 @@ app.get("/", (req, res) => {
     await sequelize.authenticate();
     console.log("Database connection has been established successfully.");
     // Start the server only if the database connection is successful
+    await sequelize.sync({ alter: true })
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });
