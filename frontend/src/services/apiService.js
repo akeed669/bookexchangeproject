@@ -1,10 +1,6 @@
 import axios from "axios";
 
-// const server_port = `http://localhost:5000/api`;
-
-// const API_URL = `http://${process.env.REACT_APP_API_URL}:5000/api`;
-
-const API_URL = `http://localhost:5000/api`;
+const API_URL = `http://${process.env.REACT_APP_API_URL}:5001/api`;
 
 axios.interceptors.request.use(
   (config) => {
