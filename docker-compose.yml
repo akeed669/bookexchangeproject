@@ -33,24 +33,24 @@ services:
     networks:
       - app-net
 
-  db:
-    image: postgres:14-alpine
-    environment:
-      POSTGRES_USER: akeed
-      POSTGRES_PASSWORD: akeed123
-      POSTGRES_DB: bookexchange
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U akeed -d bookexchange" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-net
+#   db:
+#     image: postgres:14-alpine
+#     environment:
+#       POSTGRES_USER: akeed
+#       POSTGRES_PASSWORD: akeed123
+#       POSTGRES_DB: bookexchange
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     healthcheck:
+#       test: [ "CMD-SHELL", "pg_isready -U akeed -d bookexchange" ]
+#       interval: 10s
+#       timeout: 5s
+#       retries: 5
+#     networks:
+#       - app-net
 
-volumes:
-  postgres_data:
+# volumes:
+#   postgres_data:
 
 
 networks:
