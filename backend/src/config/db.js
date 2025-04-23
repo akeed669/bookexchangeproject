@@ -10,8 +10,15 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST || "db",
     dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // ok for RDS, but use with caution for production security
+      }
+    },
     port: process.env.DB_PORT || 5432, // Default to 5432 if not set
-  }
+  },
+
 );
 
 export default sequelize;
