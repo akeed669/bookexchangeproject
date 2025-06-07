@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = `http://${process.env.REACT_APP_API_URL}:5001/api`;
+// No need to hardcode IP or env var — use relative path
+const API_URL = `/api`;
 
 axios.interceptors.request.use(
   (config) => {
@@ -10,9 +11,7 @@ axios.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 export const registerUser = async (userData) => {
@@ -20,7 +19,7 @@ export const registerUser = async (userData) => {
     const response = await axios.post(`${API_URL}/auth/register`, userData);
     return response.data;
   } catch (error) {
-    throw error.response.data;
+    throw error.response?.data || error.message;
   }
 };
 
@@ -29,8 +28,6 @@ export const loginUser = async (userData) => {
     const response = await axios.post(`${API_URL}/auth/login`, userData);
     return response.data;
   } catch (error) {
-    throw error.response.data;
+    throw error.response?.data || error.message;
   }
 };
-
-// Add more API calls as needed
